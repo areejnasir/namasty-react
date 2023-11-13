@@ -1,0 +1,1 @@
+export default Footer = () => <div className='footer'>footer</div>;
