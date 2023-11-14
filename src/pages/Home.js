@@ -1,20 +1,19 @@
 import { cardsDataObj } from "../utils/mockData";
-import Cart from "../components/Cart";
-import ShimmerUI from "../components/ShimmerUI";
+import { Cart, ShimmerUI } from "../components/index";
 import { useEffect, useState } from "react";
 
-export default Body = () => {
+export default Home = () => {
   const [filtered, setFiltered] = useState([]);
   const [totalItems, setTotalItems] = useState(cardsDataObj.length);
   const [filterItems, setFilterItems] = useState(0);
   const [search, setSearch] = useState("");
-  const [searchList, setSearchList] = useState([])
+  const [searchList, setSearchList] = useState([]);
   const [clear, setClear] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
-      setFiltered(cardsDataObj);
-      setSearchList(cardsDataObj)
+      setFiltered(cardsDataObj); //for data search only
+      setSearchList(cardsDataObj); //for store search data and render in ui
     }, 2000);
   }, []);
 
@@ -26,8 +25,10 @@ export default Body = () => {
   };
 
   const searchClick = () => {
-    const searchData = filtered.filter((value) => value.name.toLowerCase().includes(search.toLowerCase()));
-    setSearchList(searchData);
+    const searchData = filtered.filter((value) =>
+      value.name.toLowerCase().includes(search.toLowerCase())
+    ); //for data search only
+    setSearchList(searchData); // for store search data and render ui
     setTotalItems(searchData.length);
     setClear(false);
   };
@@ -35,7 +36,7 @@ export default Body = () => {
   const clearSearch = () => {
     setSearchList(cardsDataObj);
     setTotalItems(cardsDataObj.length);
-    setSearch("")
+    setSearch("");
     setClear(true);
   };
 
@@ -66,18 +67,19 @@ export default Body = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
-            <button
-              className='search-btn'
-              onClick={searchClick}
-              disabled={search !== "" ? false : true}>
-              Search
-            </button>
+          <button
+            className='search-btn'
+            onClick={searchClick}
+            disabled={search !== "" ? false : true}>
+            Search
+          </button>
 
-            <button
-              className='search-btn'
-              onClick={clearSearch} disabled={clear}>
-              Clear
-            </button>
+          <button
+            className='search-btn'
+            onClick={clearSearch}
+            disabled={clear}>
+            Clear
+          </button>
 
           <button
             className='filter-btn'
