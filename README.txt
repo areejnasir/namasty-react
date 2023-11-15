@@ -89,6 +89,7 @@ rafce
     -erro.statusText => page not found.
 
 # nested routing / Outlet
+    -outlet will replace the component according to the route
     -if i wont to different body with common header and footer then:
     -first of all i will make a children of my root path => "/"
     const routerConfig = createBrowserRouter([
@@ -114,4 +115,23 @@ rafce
     ]) 
     -after that i will import another Componet from react-router-dom, which is Outle
     -i will use this <Outlet /> on my App component between header and footer component
-    -outlet component is used to get data according to route.     
+    -outlet component is used to get data according to route.    
+
+# Link component
+    -Link component is used to navigate the route without reload page (this is call client side routing)
+    <Link to="/">Home</Link>
+    -also naver use <a> tag for navigation route in react because its reload the whole page and render new page HTML (this is called server side routing) 
+
+# dynamic routing
+    -first i will create a dynamic rote like this:
+    {
+        path: "/restaurent/:resId",
+        element: <REstaurentMenu"
+    }         
+    -after /restaurant/ start with : its all dynamic value 
+    for example you wont to route some card detail according to its id then use this 
+    -after that i will Link card to this route /restaurant/ and pass the id of restaurant like /restaurant/1
+    -after this i will import a hook called useParams() hook from react-router-dom and distructure its like this
+    => const {resId} = useParams()
+    -and then i will set the id of params in my api where restaurant id is or where my dummy data index
+    -if you have'nt api and you use dummy data then use resId like this => dymmyData[resId -1] save this data in a state then use it.

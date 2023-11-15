@@ -1,6 +1,7 @@
 import { cardsDataObj } from "../utils/mockData";
 import { Cart, ShimmerUI } from "../components/index";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default Home = () => {
   const [filtered, setFiltered] = useState([]);
@@ -14,7 +15,7 @@ export default Home = () => {
     setTimeout(() => {
       setFiltered(cardsDataObj); //for data search only
       setSearchList(cardsDataObj); //for store search data and render in ui
-    }, 2000);
+    }, 1000);
   }, []);
 
   const filterClick = () => {
@@ -95,10 +96,11 @@ export default Home = () => {
             <span className='total-items'>Total Items {totalItems}</span>
             <div className='card-container'>
               {searchList.map((data) => (
-                <Cart
-                  datas={data}
+                <Link
                   key={data.id}
-                />
+                  to={"/restaurent/" + data.id}>
+                  <Cart datas={data} />
+                </Link>
               ))}
             </div>
           </div>

@@ -1,9 +1,10 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { Home, About, ErrorPage } from "./pages/index.js";
+import { Home, About, ErrorPage, RestaurentMenu } from "./pages/index.js";
 import { Header, Footer } from "./partel/index.js";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-// provide a data according to route like => body
+// outlet provide a data according to route like => body
+// basically header is stick the application routes expect error page
 
 const App = () => (
   <div>
@@ -25,6 +26,10 @@ const routersConfig = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+      },
+      {
+        path: "/restaurent/:resId", //dynamic router start with : and after : all is dynamic like 1, 2,3 etc
+        element: <RestaurentMenu />,
       },
     ],
     errorElement: <ErrorPage />,

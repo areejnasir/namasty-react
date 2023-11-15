@@ -1,4 +1,5 @@
 import image from "../../public/Gofood-logo.png";
+import { Link } from "react-router-dom";
 
 export default Header = () => (
   <div className='header'>
@@ -11,8 +12,10 @@ export default Header = () => (
       </div>
       <div className='nav-items'>
         <ul className='nav-ul'>
-          <li>Home</li>
-          <li>Favorite</li>
+          <li>
+            <Link to='/'> Home</Link>
+          </li>
+          <li><Link to="/about">About</Link></li>
           <li>Cart</li>
           <li>Profile</li>
         </ul>
