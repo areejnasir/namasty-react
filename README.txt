@@ -135,3 +135,53 @@ rafce
     => const {resId} = useParams()
     -and then i will set the id of params in my api where restaurant id is or where my dummy data index
     -if you have'nt api and you use dummy data then use resId like this => dymmyData[resId -1] save this data in a state then use it.
+
+
+# class component works like:
+    - there is two phases
+    1) render phase
+    2) commit phase
+    -when render phase is done React update the DOM then commit phase will Approximately
+
+    -constructor
+    -render
+    -React update the DOM
+    -componentDidMount 
+
+# class component works for single child
+    -first of all when class component instanece is created, first constructor is call then render method is call then componentDidMount is call
+    -componentDidMount is like useEffect() hook that is using in function component for api calling... 
+    -if parent component is also class component then its work like this:
+    -Parent constructor will calling the parent render method is call
+    -but in parent render also have a child class componet then child is also part of parent render method so 
+    child component instance is created like: child constructor will calling then child render is call 
+    -when child stack will rendered completely global execution context return a parent component and read after child component line
+    -if there is not another child and parent render method is complete properly then parent componentDidMount will calling... 
+
+# class component work for multiple children
+    -if i have multiple children then react render both child of JSX on DOM then componentDidMount will call in order list like first then second
+
+    1) -first render phase
+    -first of all parent constructor will call
+    -then parent render method wil call 
+    -there is two children firest and second
+    -so first child constructor will call then render will call
+    -then second child constructor will call then render will call
+   ( when render phase will complete properly ) "DOM actually updated" 
+   2) -commit phase  
+   -then first child componentDidMount will call
+   -then second child componentDidMount will call
+   and the last parent componentDidMount will call
+
+# class component componentDidUpdate
+
+    -componentDidUpdate call when setState call for updated data
+
+    -render
+    -react update DOM
+    -componentDidUpdate
+
+    componentDidUpdate like after you know i made some form ander when will submit the form we have a popup like form sumbited
+
+# componetDidUnMount
+    -its will call when componet did unmount like we navigate another page before it will call
