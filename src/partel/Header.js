@@ -16,6 +16,7 @@ export default Header = () => (
             <Link to='/'> Home</Link>
           </li>
           <li><Link to="/about">About</Link></li>
+          <li><Link to="/grocery">Grocery Store</Link></li>
           <li>Cart</li>
           <li>Profile</li>
         </ul>

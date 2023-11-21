@@ -185,3 +185,33 @@ rafce
 
 # componetDidUnMount
     -its will call when componet did unmount like we navigate another page before it will call
+
+
+# custom hooks / utility hook
+    -i want to fetch some data for my restaurant menu but i do not want to messup the code the i will create a custom hook called useResMenu()
+    in another file
+    -must write "use" in any name of file and hooks thats why react understand that this is a hook. 
+
+# lazy loading
+    -this lazy loading is comes from react its is also called
+    -chunking
+    -code splitting
+    -dynamic bundling
+    -on demand loading
+    -dynamic import
+
+    how its work:
+    -when my applicaion is too big and cause of big bundles data applicaion performance is slow
+    then we use chunking the bundles for different components. for example
+    -in my application also has grocery store but i wont to load the data once i navigate this component otherwise not.
+
+    const chunking = lazy(()=> import("./path of chunking component")) 
+    -this import function is not the name import or component import, this is a different , its is a function that takes the path or lazy component.  
+
+# suspense     
+    -this is also from react library
+    -basically when we call lazy compont for better performance its takes some time to load the data
+    so we wrap up the lazy component in suspense tag
+    -suspense take have fallback like placeholder attribute
+    -in this fallback you can return some peace of jsx like <h1>Loading...</h1>
+    -it h1 tag will show before lazy component will load.     

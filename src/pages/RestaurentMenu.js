@@ -1,26 +1,13 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { cardsDataObj } from "../utils/mockData";
 import { ShimmerUI } from "../components";
+import { useResMenu } from "../utils/custom-hooks/index";
 
 export default RestaurentMenu = () => {
-  const [items, setItems] = useState({});
   const { resId } = useParams();
-
-  useEffect(() => {
-    // resMenu();
-    setTimeout(() => {
-      setItems(cardsDataObj[resId - 1]);
-    }, 1000);
-  }, []);
+  const items = useResMenu(resId)
 
   const { name, desc, rating, picture, id } = items;
 
-  // const resMenu = async () => {
-  //     const fetchData = await fetch("api-url");
-  //     const jsonData = await fetchData.json();
-  //     setItems(jsonData)
-  // }
   return (Object.keys(items).length === 0) ? <ShimmerUI /> : (
     <div className='restaurent-menu-container'>
       <div className='container'>

@@ -1,62 +1,20 @@
 import { cardsDataObj } from "../utils/mockData";
 import { Cart, ShimmerUI } from "../components/index";
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useResCard } from "../utils/custom-hooks/index";
 
 export default Home = () => {
-  const [filtered, setFiltered] = useState([]);
-  const [totalItems, setTotalItems] = useState(cardsDataObj.length);
-  const [filterItems, setFilterItems] = useState(0);
-  const [search, setSearch] = useState("");
-  const [searchList, setSearchList] = useState([]);
-  const [clear, setClear] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setFiltered(cardsDataObj); //for data search only
-      setSearchList(cardsDataObj); //for store search data and render in ui
-    }, 1000);
-  }, []);
-
-  const filterClick = () => {
-    const filteredList = filtered.filter((data) => data.rating < 3.9);
-    setFiltered(filteredList);
-    setFilterItems(filteredList.length);
-    setTotalItems(filteredList.length);
-  };
-
-  const searchClick = () => {
-    const searchData = filtered.filter((value) =>
-      value.name.toLowerCase().includes(search.toLowerCase())
-    ); //for data search only
-    setSearchList(searchData); // for store search data and render ui
-    setTotalItems(searchData.length);
-    setClear(false);
-  };
-
-  const clearSearch = () => {
-    setSearchList(cardsDataObj);
-    setTotalItems(cardsDataObj.length);
-    setSearch("");
-    setClear(true);
-  };
-
-  // useEffect(() => {
-  //   callApi();
-  // }, []);
-
-  // const callApi = async () => {
-  //   const fetchData = await fetch(
-  //     "https://www.foodpanda.pk/restaurant/k2ao/allah-wala-pakwan-and-sheermal-house?joker_id=2788035441"
-  //   );
-  //   const jsonData = await fetchData.json();
-  //   console.log({ jsonData });
-  // };
-
-  // optional chaining
-  // data?.data?.array
-
-  // conditional randring
+  const {
+    searchList,
+    totalItems,
+    filterItems,
+    clear,
+    search,
+    setSearch,
+    filterClick,
+    searchClick,
+    clearSearch,
+  } = useResCard(cardsDataObj);
   return (
     <div className='body'>
       <div className='container'>
