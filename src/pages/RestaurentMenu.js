@@ -9,7 +9,7 @@ export default RestaurentMenu = () => {
   const { name, desc, rating, picture, id } = items;
 
   return (Object.keys(items).length === 0) ? <ShimmerUI /> : (
-    <div className='restaurent-menu-container'>
+    <div className='flex justify-center items-center'>
       <div className='container'>
         <div className='res-img-container'>
           <img src={picture} />

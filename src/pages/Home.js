@@ -1,5 +1,5 @@
 import { cardsDataObj } from "../utils/mockData";
-import { Cart, ShimmerUI } from "../components/index";
+import { Cart, ShimmerUI, Btn } from "../components/index";
 import { Link } from "react-router-dom";
 import { useResCard } from "../utils/custom-hooks/index";
 
@@ -16,43 +16,43 @@ export default Home = () => {
     clearSearch,
   } = useResCard(cardsDataObj);
   return (
-    <div className='body'>
+    <div className='flex justify-center items-center py-5'>
       <div className='container'>
-        <div className='search-container'>
+        <div className='flex justify-start items-center flex-wrap'>
           <input
             type='text'
             placeholder='Search'
-            className='search-input'
+            className='w-[50%] py-3 px-5 border rounded-full ml-5'
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
-          <button
-            className='search-btn'
-            onClick={searchClick}
-            disabled={search !== "" ? false : true}>
-            Search
-          </button>
-
-          <button
-            className='search-btn'
-            onClick={clearSearch}
-            disabled={clear}>
-            Clear
-          </button>
-
-          <button
-            className='filter-btn'
-            onClick={filterClick}>
-            Filter {filterItems}
-          </button>
+          <Btn
+            name='Search'
+            style='w-[100px] p-3 rounded-full bg-black text-white border-none ml-5 md:ml-2'
+            func={searchClick}
+            disabled={search !== "" ? false : true}
+          />
+          <Btn
+            name='Clear'
+            style='w-[100px] p-3 rounded-full bg-black text-white border-none ml-5 md:ml-2 mt-3 md:mt-0 lg:mt-0'
+            func={clearSearch}
+            disabled={clear}
+          />
+          <Btn
+            name={` Filter Top rated ${filterItems}`}
+            style='w-[180px] p-3 rounded-full bg-black text-white border-none ml-5 md:ml-5 mt-3 lg:mt-0'
+            func={filterClick}
+          />
         </div>
 
         {searchList.length === 0 ? (
           <ShimmerUI />
         ) : (
-          <div className='card-container-main'>
-            <span className='total-items'>Total Items {totalItems}</span>
-            <div className='card-container'>
+          <div className='mt-10'>
+            <span className='px-5 py-3 rounded-full bg-black text-white ml-5'>
+              Total Items {totalItems}
+            </span>
+            <div className='my-10 flex justify-center flex-wrap'>
               {searchList.map((data) => (
                 <Link
                   key={data.id}

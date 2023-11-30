@@ -1,26 +1,44 @@
 import image from "../../public/Gofood-logo.png";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
-export default Header = () => (
-  <div className='header'>
-    <div className='container'>
-      <div className='logo-container'>
-        <img
-          className='app-logo'
-          src={image}
-        />
-      </div>
-      <div className='nav-items'>
-        <ul className='nav-ul'>
-          <li>
-            <Link to='/'> Home</Link>
-          </li>
-          <li><Link to="/about">About</Link></li>
-          <li><Link to="/grocery">Grocery Store</Link></li>
-          <li>Cart</li>
-          <li>Profile</li>
-        </ul>
+export default Header = () => {
+  const nav_list = [
+    {
+      id: 1,
+      name: "Home",
+      url: "/",
+    },
+    {
+      id: 2,
+      name: "About",
+      url: "/about",
+    },
+    {
+      id: 3,
+      name: "Grocery Store",
+      url: "/grocery",
+    },
+  ];
+  return (
+    <div className='flex justify-center items-center bg-goldenrod'>
+      <div className='container flex-wrap flex justify-between items-center'>
+        <div className='h-16'>
+          <img
+            className='w-full h-full object-contain'
+            src={image}
+          />
+        </div>
+        <div className='nav-items'>
+          <ul className='nav-ul'>
+            {nav_list.map((val) => (
+              <li key={val.id} className="float-left p-4 text-white">
+                <NavLink to={val.url}>{val.name}</NavLink>
+                {/* <Link to={val.url}>{val.name}</Link> */}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
