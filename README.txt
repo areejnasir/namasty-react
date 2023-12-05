@@ -215,3 +215,8 @@ rafce
     -suspense take have fallback like placeholder attribute
     -in this fallback you can return some peace of jsx like <h1>Loading...</h1>
     -it h1 tag will show before lazy component will load.     
+
+# higher order component
+    -higher order componet is a simple javascript function that takes a component and return a component function
+    -this component function aceept a props of higher order component and return some peace of JSX.    
+    -like promoted lable component
